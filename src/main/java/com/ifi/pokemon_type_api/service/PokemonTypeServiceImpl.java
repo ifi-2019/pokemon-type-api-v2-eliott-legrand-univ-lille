@@ -2,27 +2,29 @@ package com.ifi.pokemon_type_api.service;
 
 import com.ifi.pokemon_type_api.bo.PokemonType;
 import com.ifi.pokemon_type_api.repository.PokemonTypeRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PokemonTypeServiceImpl implements PokemonTypeService {
 
-    private PokemonTypeRepository pokeRepo;
+    protected PokemonTypeRepository pokemonTypeRepository;
 
     public PokemonTypeServiceImpl(PokemonTypeRepository pokeRepoImp){
         // TODO
-        this.pokeRepo = pokeRepoImp;
+        this.pokemonTypeRepository = pokeRepoImp;
     }
 
     @Override
     public PokemonType getPokemonType(int id) {
         // TODO
-        return this.pokeRepo.findPokemonTypeById(id);
+        return this.pokemonTypeRepository.findPokemonTypeById(id);
     }
 
     @Override
     public List<PokemonType> getAllPokemonTypes(){
         // TODO
-        return pokeRepo.findAllPokemonType();
+        return pokemonTypeRepository.findAllPokemonType();
     }
 }
