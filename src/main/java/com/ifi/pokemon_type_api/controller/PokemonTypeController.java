@@ -2,10 +2,7 @@ package com.ifi.pokemon_type_api.controller;
 
 import com.ifi.pokemon_type_api.bo.PokemonType;
 import com.ifi.pokemon_type_api.service.PokemonTypeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,11 @@ class PokemonTypeController {
     @GetMapping("/{id}")
     PokemonType getPokemonTypeFromId(@PathVariable int id){
         return this.service.getPokemonType(id);
+    }
+
+    @GetMapping(value="/", params = "name")
+    public PokemonType getPokemonTypeFromName(@RequestParam(name="name") String name) {
+            return this.service.getPokemonTypeByName(name);
     }
 
     @GetMapping("/")
